@@ -72,10 +72,19 @@ while atm_machine:
         allowedOption = int(input("Please select an option: "))
 
         if (allowedOption == 1):
+            print(
+                f"You have #{account_balance} in your account.\n"
+            )
             withdrawal = int(
                 input("How much would you like to withdrawal? \n")
             )
+
             print("Withdrawaling cash. . .Please wait. . .")
+
+            if (account_balance <= 0):
+                print("Opps, you have cash in your account. Deposit, and try again.")
+                break
+
             account_balance -= withdrawal
             print("Take your cash. :-)")
             print(f"You have #{account_balance} remaining in your account.")
