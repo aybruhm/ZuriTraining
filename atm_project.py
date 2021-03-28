@@ -38,7 +38,7 @@ while atm_machine:
 
     """
     For a username not found in the authenticatedUsers, line 42 throws a value error;
-    causing the whole program to break. I solved this by using the try/except block.
+    causing the whole program to break. I solved this error by using the try/except block.
     """
     try:
         userID = authenticatedUsers.index(username)
@@ -102,7 +102,7 @@ while atm_machine:
             print(f"You now have #{account_balance} in your account.")
 
         elif (allowedOption == 3):
-            complainMsg = input("What is your complain? \n\n")
+            complainMsg = input("What issue will you like to report? \n\n")
             print("\n\nPlease wait, while we send your complain.")
 
             # sends complain message to a txt file
