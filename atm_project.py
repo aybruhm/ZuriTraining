@@ -32,7 +32,7 @@ while atm_machine:
     Welcome to ATM mock project.. Please Login In.
     ===========================================\n \n""")
 
-    # Asks for user, username and password
+    # Asks for user's username
     username = input("Your Username: ")
 
     """
@@ -50,27 +50,63 @@ while atm_machine:
 
         password = input(f"Password for {username}: ")
         if (password in authenticatedPwd[userID]):
-            print("""============. . .Authentication Successful. . .============""")
-            print(f"Welcome, {username}")
-    else:
-        print(
-            """============ You are not in our database, please try again. ============""")
+            print("""============. . .Authentication Successful. . .============\n""")
 
-        option = input(
-            "Please select an option: \n 1 - withdrawal \n 2 - deposit \n 3 - complaint \n\n ")
+            # Capitalize the first letter "a" -> "A"
+            print(f"Welcome, {str.capitalize(username)}")
 
-        if (option == 1):
-            withdrawal = input("How much would you like to withdrawal? ")
+            """
+            TODO:
+            - import date module
+            - show time and date
+            """
+        else:
+            print(
+                """============ You are not in our database, please try again. ============""")
+            break
+
+        print("""
+        These are the allowed options:\n
+        1. Withdrawal\n
+        2. Cash Deposit\n
+        3. Complaint
+        """)
+
+        allowedOption = int(input("Please select an option: "))
+
+        if (allowedOption == 1):
+            withdrawal = int(
+                input("How much would you like to withdrawal? \n")
+            )
+            print("Withdrawaling cash. . .Please wait. . .")
             account_balance -= withdrawal
-            print("Withdrawaling cash. . .Please wait. . .\n Take your cash.")
+            print("Take your cash. :-)")
+            print(f"You have #{account_balance} remaining in your account.")
 
-        elif (option == 2):
-            deposit = input("How much would you like to deposit? ")
+        elif (allowedOption == 2):
+            print(
+                f"You now have #{account_balance} in your account.\n"
+            )
+            deposit = int(
+                input("How much would you like to deposit? ")
+            )
             account_balance += deposit
             print(
-                f"Cash deposited. You now have {account_balance} in your account.")
+                f"Depositing cash. . .Cash deposited! \n")
+            print(f"You now have #{account_balance} in your account.")
 
-        elif (option == 3):
-            pass
+        elif (allowedOption == 3):
+            complainMsg = input("What is your complain? \n\n")
+            print("\n\nPlease wait, while we send your complain.")
+
+            # sends complain message to a txt file
+            with (open("complain.txt")) as f:
+                f.write(complainMsg)
+                f.close()
+
+            print("Complain sent!\n")
+            print("Thank you for contacting us.")
+        else:
+            print("Ooof. You have select an incorrect option. Please try again.")
 
     break
