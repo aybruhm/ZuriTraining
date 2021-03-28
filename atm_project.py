@@ -27,27 +27,50 @@ account_balance = 10000
 
 
 while atm_machine:
-    print("Hello, welcome to ATM mock project..\n Please Login In.")
+    print("""
+    ===========================================
+    Welcome to ATM mock project.. Please Login In.
+    ===========================================\n \n""")
 
-    #Asks for user, username and password
+    # Asks for user, username and password
     username = input("Your Username: ")
-    password = input("Your Password: ")
 
-    if (username in authenticatedUsers) and (password in authenticatedPwd):
-        print("Authenticating..")
-        print("You are now logged in!")
-        print(f"The data and time is: ")
+    """
+    For a username not found in the authenticatedUsers, line 42 throws a value error;
+    causing the whole program to break. I solved this by using the try/except block.
+    """
+    try:
+        userID = authenticatedUsers.index(username)
+    except ValueError:
+        print("Oops, we can not find you in our users list. :-) \n")
+        break
 
-        option = input("Please select an option: \n 1 - withdrawal \n 2 - deposit \n 3 - complaint \n\n ")
-        
+    if (username in authenticatedUsers):
+        print("""============. . .Authenticating. . .============\n""")
+
+        password = input(f"Password for {username}: ")
+        if (password in authenticatedPwd[userID]):
+            print("""============. . .Authentication Successful. . .============""")
+            print(f"Welcome, {username}")
+    else:
+        print(
+            """============ You are not in our database, please try again. ============""")
+
+        option = input(
+            "Please select an option: \n 1 - withdrawal \n 2 - deposit \n 3 - complaint \n\n ")
+
         if (option == 1):
             withdrawal = input("How much would you like to withdrawal? ")
             account_balance -= withdrawal
             print("Withdrawaling cash. . .Please wait. . .\n Take your cash.")
+
         elif (option == 2):
-            pass
+            deposit = input("How much would you like to deposit? ")
+            account_balance += deposit
+            print(
+                f"Cash deposited. You now have {account_balance} in your account.")
+
         elif (option == 3):
             pass
-
 
     break
