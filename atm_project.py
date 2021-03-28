@@ -1,6 +1,6 @@
 """
-This is an extended ATM project from the pervious classes,
-taught. Features includes:
+This is an extended ATM project from the previous class,
+taught. Features that I will be including:
 
 - user should see the current date and time (after they log in)
 - when user selects option 1, present them with the following options:
@@ -15,7 +15,8 @@ taught. Features includes:
 """
 
 import datetime
-date = datetime
+
+date = datetime.datetime.now()
 
 
 authenticatedUsers = ['abram', 'dan', 'jacob']
@@ -54,12 +55,8 @@ while atm_machine:
 
             # Capitalize the first letter "a" -> "A"
             print(f"Welcome, {str.capitalize(username)}")
-
-            """
-            TODO:
-            - import date module
-            - show time and date
-            """
+            time_date = date.strftime("%c")
+            print(f"Date and Time: {time_date}")
         else:
             print(
                 """============ You are not in our database, please try again. ============""")
@@ -100,9 +97,9 @@ while atm_machine:
             print("\n\nPlease wait, while we send your complain.")
 
             # sends complain message to a txt file
-            with (open("complain.txt")) as f:
-                f.write(complainMsg)
-                f.close()
+            f = open(f"complain-({userID}).txt", "w")
+            f.write(complainMsg)
+            f.close()
 
             print("Complain sent!\n")
             print("Thank you for contacting us.")
