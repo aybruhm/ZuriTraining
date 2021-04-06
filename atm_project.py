@@ -55,6 +55,7 @@ while atm_machine:
 
             # Capitalize the first letter "a" -> "A"
             print(f"Welcome, {str.capitalize(username)}")
+            # The current date and time
             time_date = date.strftime("%c")
             print(f"Date and Time: {time_date}")
         else:
