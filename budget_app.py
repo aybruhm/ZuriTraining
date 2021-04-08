@@ -31,21 +31,112 @@ class Budget:
             amount_deposit = int(input("\nHow much do you want to deposit: "))
             Budget.food_money += amount_deposit
             print("Depositing to Food balance. . .Please Wait. . .Money deposited!")
-            print(f"You now have {Budget.food_money} in your food balance.")
+            print(f"You now have {Budget.food_money} in your food balance. \n")
+
+            """
+            Gives the user an option to restart again.
+            """
+            restart_choice = str.capitalize(input("Do you want to try again? (Y) - yes or (N) - no: "))
+            
+            if restart_choice == "Y":
+                start_option = int(
+                    input("""\n What do you wish to do today? 
+                        \n 1. Deposit funds \n 2. Withdrawal funds \n 3.Calculate your total balance \n 4. Transfer from a existing balance \n\n Please choose: """)
+                    )
+                if start_option == 1:
+                    print("############################################")
+                    budget.deposit_funds()
+                elif start_option == 2:
+                    print("############################################")
+                    budget.withdrawal_funds()
+                    print("############################################")
+                elif start_option == 3:
+                    budget.computes_category_balance()
+                elif start_option == 4:
+                    print("############################################")
+                    budget.transfer_balance()
+                else:
+                    print("Thank you for banking with us!")
+
+            elif restart_choice == "N":
+                print("Thank you for checking in with us.")
+
+            elif restart_choice == "N":
+                print("Thank you for checking in with us.")
+
 
         elif choosed_category == 2:
             print("You selected category 2: Clothing")
             amount_deposit = int(input("\nHow much do you want to deposit: "))
             Budget.clothing_money += amount_deposit
             print("Depositing to Clothing balance. . .Please Wait. . .Money deposited!")
-            print(f"You now have {Budget.clothing_money} in your food balance.")
+            print(f"You now have {Budget.clothing_money} in your food balance. \n")
+
+            """
+            Gives the user an option to restart again.
+            """
+            restart_choice = str.capitalize(input("Do you want to try again? (Y) - yes or (N) - no: "))
+            
+            if restart_choice == "Y":
+                start_option = int(
+                    input("""\n What do you wish to do today? 
+                        \n 1. Deposit funds \n 2. Withdrawal funds \n 3.Calculate your total balance \n 4. Transfer from a existing balance \n\n Please choose: """)
+                    )
+                if start_option == 1:
+                    print("############################################")
+                    budget.deposit_funds()
+                elif start_option == 2:
+                    print("############################################")
+                    budget.withdrawal_funds()
+                    print("############################################")
+                elif start_option == 3:
+                    budget.computes_category_balance()
+                elif start_option == 4:
+                    print("############################################")
+                    budget.transfer_balance()
+                else:
+                    print("Thank you for banking with us!")
+
+            elif restart_choice == "N":
+                print("Thank you for checking in with us.")
 
         elif choosed_category == 3:
             print("You selected category 3: Entertainment")
             amount_deposit = int(input("\nHow much do you want to deposit: "))
             Budget.entertainment_money += amount_deposit
             print("Depositing to Entertainment balance. . .Please Wait. . .Money deposited!")
-            print(f"You now have {Budget.entertainment_money} in your food balance.")
+            print(f"You now have {Budget.entertainment_money} in your food balance. \n")
+
+            """
+            Gives the user an option to restart again.
+            """
+            restart_choice = str.capitalize(input("Do you want to try again? (Y) - yes or (N) - no: "))
+            
+            if restart_choice == "Y":
+                start_option = int(
+                    input("""\n What do you wish to do today? 
+                        \n 1. Deposit funds \n 2. Withdrawal funds \n 3.Calculate your total balance \n 4. Transfer from a existing balance \n\n Please choose: """)
+                    )
+                if start_option == 1:
+                    print("############################################")
+                    budget.deposit_funds()
+                elif start_option == 2:
+                    print("############################################")
+                    budget.withdrawal_funds()
+                    print("############################################")
+                elif start_option == 3:
+                    budget.computes_category_balance()
+                elif start_option == 4:
+                    print("############################################")
+                    budget.transfer_balance()
+                else:
+                    print("Thank you for banking with us!")
+
+            elif restart_choice == "N":
+                print("Thank you for checking in with us.")
+
+            elif restart_choice == "N":
+                print("Thank you for checking in with us.")
         else:
             print("Oops. No such option in category list.")
             restart_choice = input("Do you want to try again? (Y) - yes or (N) - no: ")
