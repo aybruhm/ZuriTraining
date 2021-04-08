@@ -49,7 +49,7 @@ while atm_machine:
     if (username in authenticatedUsers):
         print("""============. . .Authenticating. . .============\n""")
 
-        password = input(f"Password for {username}: ")
+        password = input(f"Password for {username}: " )
         if (password in authenticatedPwd[userID]):
             print("""============. . .Authentication Successful. . .============\n""")
 
@@ -107,7 +107,7 @@ while atm_machine:
             print("\n\nPlease wait, while we send your complain.")
 
             # sends complain message to a txt file
-            f = open(f"complain-({userID}).txt", "w")
+            f = open(f"complains/complain-({userID}).txt", "w")
             f.write(complainMsg)
             f.close()
 
