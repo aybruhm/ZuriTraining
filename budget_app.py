@@ -320,8 +320,28 @@ class Budget:
 
             elif transfer_to == 2:
                 print("\nTransferring funds from Food to Clothing. . .")
-                food_balance -= from_amount
-                print(f"You now have {food_balance} in your wallet.")
+
+
+                """
+                Conditional statement, to check if the category has enough funds or not.
+                """
+                if (food_balance == 0):
+                    print(f"\nYou have #{food_balance} in your balance. Do you wish to continue?\n")
+
+                    choice = str.capitalize(input("Choose a choice (Y) - yes or (N) - no: "))
+                    if choice == "Y":
+                        print("\n##########################")
+                        budget.startBudgetApp()
+                    elif choice == "N":
+                        print("Thank you for checking in with us.")
+
+                elif (food_balance > from_amount):
+                    food_balance -= from_amount
+                    print(f"You now have {food_balance} in your wallet.\n")
+
+                elif (food_balance < from_amount):
+                    print("You don't have up to the requested amount.")
+                
 
                 """
                 Waits for 5 seconds, while transferring funds from the selected category.
@@ -338,16 +358,36 @@ class Budget:
                 
             elif transfer_to == 3:
                 print("Transferring funds from Food to Entertainment. . .")
-                food_balance -= from_amount
-                print(f"You now have {food_balance} in your wallet.")
+
+
+                """
+                Conditional statement, to check if the category has enough funds or not.
+                """
+                if (food_balance == 0):
+                    print(f"\nYou have #{food_balance} in your balance. Do you wish to continue?\n")
+
+                    choice = str.capitalize(input("Choose a choice (Y) - yes or (N) - no: "))
+                    if choice == "Y":
+                        print("\n##########################")
+                        budget.startBudgetApp()
+                    elif choice == "N":
+                        print("Thank you for checking in with us.")
+
+                elif (food_balance > from_amount):
+                    food_balance -= from_amount
+                    print(f"You now have {food_balance} in your wallet.\n")
+
+                elif (food_balance < from_amount):
+                    print("You don't have up to the requested amount.")
+
 
                 """
                 Waits for 5 seconds, while transferring funds from the selected category.
                 """
                 time.sleep(5)
                 entertainment_balance += from_amount
-                print("\nMoney transferred!")
-                print(f"You now have {entertainment_balance} in your wallet.")
+                print("Money transferred!")
+                print(f"You now have {entertainment_balance} in your wallet.\n")
 
                 """
                 Calls restartBudgetApp, giving the user an option to restart again.
@@ -360,16 +400,32 @@ class Budget:
         elif transfer_from == 2:
             if transfer_to == 1:
                 print("\nTransferring funds from Clothing to Food. . .")
-                clothing_balance -= from_amount
-                print(f"You now have {clothing_balance} in your wallet.")
+                
+                if (clothing_balance == 0):
+                    print(f"\nYou have #{clothing_balance} in your balance. Do you wish to continue?\n")
+
+                    choice = str.capitalize(input("Choose a choice (Y) - yes or (N) - no: "))
+                    if choice == "Y":
+                        print("\n##########################")
+                        budget.startBudgetApp()
+                    elif choice == "N":
+                        print("Thank you for checking in with us.")
+
+                elif (clothing_balance > from_amount):
+                    clothing_balance -= from_amount
+                    print(f"You now have {clothing_balance} in your wallet.")
+
+                elif (clothing_balance < from_amount):
+                    print("You don't have up to the requested amount.")
+
 
                 """
                 Waits for 5 seconds, while transferring funds from the selected category.
                 """
                 time.sleep(5)
-                food_balance += from_amount
+                food_money += from_amount
                 print("\nMoney transferred!")
-                print(f"You now have {clothing_balance} in your wallet.")
+                print(f"You now have {food_money} in your wallet.")
 
                 """
                 Calls restartBudgetApp, giving the user an option to restart again.
@@ -379,6 +435,42 @@ class Budget:
             elif transfer_to == 2:
                 print("\nWe apologize, but you can not transfer from and to the same category.")
                 
+                """
+                Calls restartBudgetApp, giving the user an option to restart again.
+                """
+                budget.restartBudgetApp()
+
+            elif transfer_to == 3:
+                print("\nTransferring funds from Clothing to Entertainment. . .")
+
+                """
+                Conditional statement, to check if the category has enough funds or not.
+                """
+                if (clothing_balance == 0):
+                    print(f"\nYou have #{clothing_balance} in your balance. Do you wish to continue?\n")
+
+                    choice = str.capitalize(input("Choose a choice (Y) - yes or (N) - no: "))
+                    if choice == "Y":
+                        print("\n##########################")
+                        budget.startBudgetApp()
+                    elif choice == "N":
+                        print("Thank you for checking in with us.")
+
+                elif (clothing_balance > from_amount):
+                    clothing_balance -= from_amount
+                    print(f"You now have {food_balance} in your wallet.\n")
+
+                elif (clothing_balance < from_amount):
+                    print("You don't have up to the requested amount.")
+
+                """
+                Waits for 5 seconds, while transferring funds from the selected category.
+                """
+                time.sleep(5)
+                entertainment_money += from_amount
+                print("\nMoney transferred!")
+                print(f"You now have {entertainment_money} in your wallet.")
+
                 """
                 Calls restartBudgetApp, giving the user an option to restart again.
                 """
