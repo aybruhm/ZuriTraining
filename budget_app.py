@@ -1,5 +1,8 @@
 """
-Create a Budget class that can instantiate objects based on different budget categories like food, clothing, and entertainment. These objects should allow for
+Create a Budget class that can instantiate objects based on 
+different budget categories like food, clothing, and entertainment. 
+These objects should allow for: 
+
 1.  Depositing funds to each of the categories
 2.  Withdrawing funds from each category
 3.  Computing category balances
@@ -40,6 +43,18 @@ class Budget:
             budget.transfer_balance()
         else:
             print("Opps. Seems like you have selected an invalid option.")
+
+
+    def restartBudgetApp(self):
+        """
+        Gives the user an option to restart again.
+        """
+        restart_choice = str.capitalize(input("Do you want to try again? (Y) - yes or (N) - no: "))
+        
+        if restart_choice == "Y":
+            Budget.startBudgetApp(self)
+        elif restart_choice == "N":
+            print("Thank you for checking in with us.")
 
 
     """
@@ -120,11 +135,12 @@ class Budget:
 
         if choosed_category == 1:
             print("You selected category 1: Food")
+            amount_withdrawal = int(input("\nHow much do you want to withdrawal: "))
             total_balance = Budget.food_money
             print(f"You have {total_balance} in your balance")
 
-            if total_balance <= 0:
-                print(f"\nYou have {total_balance} in your balance. Do you wish to continue?")
+            if (total_balance <= 0):
+                print(f"\nYou have {total_balance} in your balance. Do you wish to continue?\n")
                 choice = str.capitalize(input("Choose a choice (Y) - yes or (N) - no: "))
                 if choice == "Y":
                     print("\n##########################")
@@ -132,33 +148,26 @@ class Budget:
                 elif choice == "N":
                     print("Thank you for checking in with us.")
 
-            amount_withdrawal = int(input("\nHow much do you want to withdrawal: "))
-            
-            if (total_balance <= 0):
-                print(f"You have {total_balance} money in your account. \n")
             elif (total_balance > amount_withdrawal):
                 total_balance -= amount_withdrawal
                 print("Withdrawaling from Food balance. . .Please Wait. . .Money withdrawaled!")
                 print(f"You now have {total_balance} in your food balance. \n")
+
             elif (total_balance < amount_withdrawal):
                 print("You don't have up to the requested amount.")
 
             """
-            Gives the user an option to restart again.
+            Calls restartBudgetApp, giving the user an option to restart again.
             """
-            restart_choice = str.capitalize(input("Do you want to try again? (Y) - yes or (N) - no: "))
-            
-            if restart_choice == "Y":
-                Budget.startBudgetApp(self)
-            elif restart_choice == "N":
-                print("Thank you for checking in with us.")
+            budget.restartBudgetApp()
 
         elif choosed_category == 2:
             print("You selected category 2: Clothing")
+            amount_withdrawal = int(input("\nHow much do you want to withdrawal: "))
             total_balance = Budget.clothing_money
             print(f"You have {total_balance} in your balance")
 
-            if total_balance <= 0:
+            if (total_balance <= 0):
                 print(f"\nYou have {total_balance} in your balance. Do you wish to continue?")
                 choice = str.capitalize(input("Choose a choice (Y) - yes or (N) - no: "))
                 if choice == "Y":
@@ -166,30 +175,23 @@ class Budget:
                     budget.startBudgetApp()
                 elif choice == "N":
                     print("Thank you for checking in with us.")
-
-            amount_withdrawal = int(input("\nHow much do you want to withdrawal: "))
             
-            if (total_balance <= 0):
-                print(f"You have {total_balance} money in your account. \n")
             elif (total_balance > amount_withdrawal):
                 total_balance -= amount_withdrawal
                 print("Withdrawaling from Food balance. . .Please Wait. . .Money withdrawaled!")
                 print(f"You now have {total_balance} in your food balance. \n")
+
             elif (total_balance < amount_withdrawal):
                 print("You don't have up to the requested amount.")
 
             """
-            Gives the user an option to restart again.
+            Calls restartBudgetApp, giving the user an option to restart again.
             """
-            restart_choice = str.capitalize(input("Do you want to try again? (Y) - yes or (N) - no: "))
-            
-            if restart_choice == "Y":
-                Budget.startBudgetApp(self)
-            elif restart_choice == "N":
-                print("Thank you for checking in with us.")
+            budget.restartBudgetApp()
 
         elif choosed_category == 3:
             print("You selected category 3: Entertainment")
+            amount_withdrawal = int(input("\nHow much do you want to withdrawal: "))
             total_balance = Budget.entertainment_money
             print(f"You have {total_balance} in your balance")
 
@@ -201,27 +203,19 @@ class Budget:
                     budget.startBudgetApp()
                 elif choice == "N":
                     print("Thank you for checking in with us.")
-
-            amount_withdrawal = int(input("\nHow much do you want to withdrawal: "))
             
-            if (total_balance <= 0):
-                print(f"You have {total_balance} money in your account. \n")
             elif (total_balance > amount_withdrawal):
                 total_balance -= amount_withdrawal
                 print("Withdrawaling from Food balance. . .Please Wait. . .Money withdrawaled!")
                 print(f"You now have {total_balance} in your food balance. \n")
+
             elif (total_balance < amount_withdrawal):
                 print("You don't have up to the requested amount.")
 
             """
-            Gives the user an option to restart again.
+            Calls restartBudgetApp, giving the user an option to restart again.
             """
-            restart_choice = str.capitalize(input("Do you want to try again? (Y) - yes or (N) - no: "))
-            
-            if restart_choice == "Y":
-                Budget.startBudgetApp(self)
-            elif restart_choice == "N":
-                print("Thank you for checking in with us.")
+            budget.restartBudgetApp()
 
         else:
             print("Oops. No such option in category list.")
@@ -237,7 +231,39 @@ class Budget:
     Computes each category balance
     """
     def computes_balance(self):
-        print("Computing balance...")
+        print("Knowing your balance just got faster and better! \n")
+        print("Categories: \n 1. Food \n 2. Clothing \n 3. Entertainment \n")
+        choosed_category = int(input("Choose a category you intend to withdrawal from: "))
+
+        if choosed_category == 1:
+            print("\nYou choose Category 1, which is Food.")
+            print("Please wait, while we calculate category 1 balance. . .")
+
+            time.sleep(5)
+            print(f"\nFood balance: #{budget.food_money}")
+
+        elif choosed_category == 2:
+            print("\nYou choose Category 2, which is Clothing.")
+            print("Please wait, while we calculate category 2 balance. . .")
+
+            time.sleep(5)
+            print(f"\nClothing balance: #{budget.clothing_money}")
+
+        elif choosed_category == 3:
+            print("\nYou choose Category 3, which is Entertainment.")
+            print("Please wait, while we calculate category 3 balance. . .")
+
+            time.sleep(5)
+            print(f"\nEntertainment balance: #{budget.entertainment_money}")
+
+        else:
+            print("Oops. No such option in category list.")
+            restart_choice = input("Do you want to try again? (Y) - yes or (N) - no: ")
+            
+            if restart_choice == "Y":
+                budget.deposit_funds()
+            elif restart_choice == "N":
+                print("Thank you for checking in with us.")
 
 
     """
@@ -260,14 +286,9 @@ class Budget:
                 print("\nWe apologize, but you can not transfer from and to the same category.")
                 
                 """
-                Gives the user an option to restart again.
+                Calls restartBudgetApp, giving the user an option to restart again.
                 """
-                restart_choice = str.capitalize(input("Do you want to try again? (Y) - yes or (N) - no: "))
-                
-                if restart_choice == "Y":
-                    Budget.startBudgetApp(self)
-                elif restart_choice == "N":
-                    print("Thank you for checking in with us.")
+                budget.restartBudgetApp()
 
             elif transfer_to == 2:
                 print("\nTransferring funds from Food to Clothing. . .")
@@ -283,14 +304,9 @@ class Budget:
                 print(f"You now have {clothing_balance} in your wallet.")
 
                 """
-                Gives the user an option to restart again.
+                Calls restartBudgetApp, giving the user an option to restart again.
                 """
-                restart_choice = str.capitalize(input("Do you want to try again? (Y) - yes or (N) - no: "))
-                
-                if restart_choice == "Y":
-                    Budget.startBudgetApp(self)
-                elif restart_choice == "N":
-                    print("Thank you for checking in with us.")
+                budget.restartBudgetApp()
                 
             elif transfer_to == 3:
                 print("Transferring funds from Food to Entertainment. . .")
@@ -306,14 +322,9 @@ class Budget:
                 print(f"You now have {entertainment_balance} in your wallet.")
 
                 """
-                Gives the user an option to restart again.
+                Calls restartBudgetApp, giving the user an option to restart again.
                 """
-                restart_choice = str.capitalize(input("Do you want to try again? (Y) - yes or (N) - no: "))
-                
-                if restart_choice == "Y":
-                    Budget.startBudgetApp(self)
-                elif restart_choice == "N":
-                    print("Thank you for checking in with us.")
+                budget.restartBudgetApp()
 
             else:
                 print("You have selected an invalid option.")
@@ -333,63 +344,70 @@ class Budget:
                 print(f"You now have {clothing_balance} in your wallet.")
 
                 """
-                Gives the user an option to restart again.
+                Calls restartBudgetApp, giving the user an option to restart again.
                 """
-                restart_choice = str.capitalize(input("Do you want to try again? (Y) - yes or (N) - no: "))
-                
-                if restart_choice == "Y":
-                    Budget.startBudgetApp(self)
-                elif restart_choice == "N":
-                    print("Thank you for checking in with us.")
+                budget.restartBudgetApp()
 
             elif transfer_to == 2:
                 print("\nWe apologize, but you can not transfer from and to the same category.")
                 
                 """
-                Gives the user an option to restart again.
+                Calls restartBudgetApp, giving the user an option to restart again.
                 """
-                restart_choice = str.capitalize(input("Do you want to try again? (Y) - yes or (N) - no: "))
-                
-                if restart_choice == "Y":
-                    Budget.startBudgetApp(self)
-                elif restart_choice == "N":
-                    print("Thank you for checking in with us.")
+                budget.restartBudgetApp()
 
         elif transfer_from == 3:
-            print("\nTransferring funds from Clothing to Entertainment. . .")
-            clothing_balance -= from_amount
-            print(f"You now have {clothing_balance} in your wallet.")
+            if transfer_to == 1:
+                print("\nTransferring funds from Entertainment to Food. . .")
+                entertainment_balance -= from_amount
+                print(f"You now have {entertainment_balance} in your wallet.")
 
-            """
-            Waits for 5 seconds, while transferring funds from the selected category.
-            """
-            time.sleep(5)
-            entertainment_balance += from_amount
-            print("\nMoney transferred!")
-            print(f"You now have {clothing_balance} in your wallet.")
+                """
+                Waits for 5 seconds, while transferring funds from the selected category.
+                """
+                time.sleep(5)
+                food_balance += from_amount
+                print("\nMoney transferred!")
+                print(f"You now have {food_balance} in your wallet.")
 
-            """
-            Gives the user an option to restart again.
-            """
-            restart_choice = str.capitalize(input("Do you want to try again? (Y) - yes or (N) - no: "))
-            
-            if restart_choice == "Y":
-                Budget.startBudgetApp(self)
-            elif restart_choice == "N":
-                print("Thank you for checking in with us.")
+                """
+                Calls restartBudgetApp, giving the user an option to restart again.
+                """
+                budget.restartBudgetApp()
+
+            elif transfer_to == 2:
+                print("\nTransferring funds from Entertainment to Clothing. . .")
+                entertainment_balance -= from_amount
+                print(f"You now have {entertainment_balance} in your wallet.")
+
+                """
+                Waits for 5 seconds, while transferring funds from the selected category.
+                """
+                time.sleep(5)
+                clothing_balance += from_amount
+                print("\nMoney transferred!")
+                print(f"You now have {clothing_balance} in your wallet.")
+
+                """
+                Calls restartBudgetApp, giving the user an option to restart again.
+                """
+                budget.restartBudgetApp()
+
+            elif transfer_to == 3:
+                print("\nWe apologize, but you can not transfer from and to the same category.")
+                
+                """
+                Calls restartBudgetApp, giving the user an option to restart again.
+                """
+                budget.restartBudgetApp()
 
         else:
             print("You have selected an invalid option.")
             
             """
-            Gives the user an option to restart again.
+            Calls restartBudgetApp, giving the user an option to restart again.
             """
-            restart_choice = str.capitalize(input("Do you want to try again? (Y) - yes or (N) - no: "))
-            
-            if restart_choice == "Y":
-                Budget.startBudgetApp(self)
-            elif restart_choice == "N":
-                print("Thank you for checking in with us.")
+            budget.restartBudgetApp()
 
 
 budget = Budget("food", "clothing", "entertainment")
