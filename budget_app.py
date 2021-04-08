@@ -232,7 +232,7 @@ class Budget:
     """
     def computes_balance(self):
         print("Knowing your balance just got faster and better! \n")
-        print("Categories: \n 1. Food \n 2. Clothing \n 3. Entertainment \n")
+        print("Categories: \n 1. Food \n 2. Clothing \n 3. Entertainment \n 4. All \n")
         choosed_category = int(input("Choose a category you intend to withdrawal from: "))
 
         if choosed_category == 1:
@@ -240,21 +240,49 @@ class Budget:
             print("Please wait, while we calculate category 1 balance. . .")
 
             time.sleep(5)
-            print(f"\nFood balance: #{budget.food_money}")
+            print(f"\nFood balance: #{budget.food_money} \n")
+
+            """
+            Calls restartBudgetApp, giving the user an option to restart again.
+            """
+            budget.restartBudgetApp()
 
         elif choosed_category == 2:
             print("\nYou choose Category 2, which is Clothing.")
             print("Please wait, while we calculate category 2 balance. . .")
 
             time.sleep(5)
-            print(f"\nClothing balance: #{budget.clothing_money}")
+            print(f"\nClothing balance: #{budget.clothing_money} \n")
+
+            """
+            Calls restartBudgetApp, giving the user an option to restart again.
+            """
+            budget.restartBudgetApp()
 
         elif choosed_category == 3:
             print("\nYou choose Category 3, which is Entertainment.")
             print("Please wait, while we calculate category 3 balance. . .")
 
             time.sleep(5)
-            print(f"\nEntertainment balance: #{budget.entertainment_money}")
+            print(f"\nEntertainment balance: #{budget.entertainment_money} \n")
+
+            """
+            Calls restartBudgetApp, giving the user an option to restart again.
+            """
+            budget.restartBudgetApp()
+
+        elif choosed_category == 4:
+            print("\nYou found our newest feature, you can now know the balance of all your category.")
+            print("Please wait...")
+
+            print("We are calculating your categories balances. . .")
+            time.sleep(5)
+            print(f"\nResults: \nFood balance - #{budget.food_money} \nClothing balance - #{budget.clothing_money} \nEntertainment balance - #{budget.entertainment_money} \n")
+
+            """
+            Calls restartBudgetApp, giving the user an option to restart again.
+            """
+            budget.restartBudgetApp()
 
         else:
             print("Oops. No such option in category list.")
