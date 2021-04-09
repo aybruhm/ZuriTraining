@@ -1,4 +1,4 @@
 *.env
 *.vscode
-*budget_app.py
-*improved_atm_project.py
+budget_app.py
+improved_atm_project.py
