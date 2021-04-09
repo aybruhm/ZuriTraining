@@ -109,8 +109,10 @@ def complaint():
     complainMsg = input("What issue will you like to report? \n\n")
     print("\nPlease wait, while we send your complain.")
 
+    """
+    sends complain message to a txt file
+    """
     time.sleep(5)
-    # sends complain message to a txt file
     f = open(f"complains/complain.txt", "w")
     f.write(complainMsg)
     f.close()
