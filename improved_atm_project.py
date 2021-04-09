@@ -28,7 +28,14 @@ def init():
     else:
         print("Oops. You selected an invalid option")
         print("Do you wish to continue?")
+
         continue_option = str.capitalize(input("Select Y - yes or N - no: "))
+        if (continue_option == "Y"):
+            init()
+        elif (continue_option == "N"):
+            print("Thank you for banking with us.")
+        else:
+            print("Oof, wrong command.")
 
 
 def register():
