@@ -479,8 +479,27 @@ class Budget:
         elif transfer_from == 3:
             if transfer_to == 1:
                 print("\nTransferring funds from Entertainment to Food. . .")
-                entertainment_balance -= from_amount
-                print(f"You now have {entertainment_balance} in your wallet.")
+
+                """
+                Conditional statement, to check if the category has enough funds or not.
+                """
+                if (entertainment_balance == 0):
+                    print(f"\nYou have #{clothing_balance} in your balance. Do you wish to continue?\n")
+
+                    choice = str.capitalize(input("Choose a choice (Y) - yes or (N) - no: "))
+                    if choice == "Y":
+                        print("\n##########################")
+                        budget.startBudgetApp()
+                    elif choice == "N":
+                        print("Thank you for checking in with us.")
+
+                elif (entertainment_balance > from_amount):
+                    entertainment_balance -= from_amount
+                    print(f"You now have {entertainment_balance} in your wallet.")
+
+                elif (entertainment_balance < from_amount):
+                    print("You don't have up to the requested amount.")
+
 
                 """
                 Waits for 5 seconds, while transferring funds from the selected category.
@@ -497,8 +516,27 @@ class Budget:
 
             elif transfer_to == 2:
                 print("\nTransferring funds from Entertainment to Clothing. . .")
-                entertainment_balance -= from_amount
-                print(f"You now have {entertainment_balance} in your wallet.")
+
+                """
+                Conditional statement, to check if the category has enough funds or not.
+                """
+                if (entertainment_balance == 0):
+                    print(f"\nYou have #{clothing_balance} in your balance. Do you wish to continue?\n")
+
+                    choice = str.capitalize(input("Choose a choice (Y) - yes or (N) - no: "))
+                    if choice == "Y":
+                        print("\n##########################")
+                        budget.startBudgetApp()
+                    elif choice == "N":
+                        print("Thank you for checking in with us.")
+
+                elif (entertainment_balance > from_amount):
+                    entertainment_balance -= from_amount
+                    print(f"You now have {entertainment_balance} in your wallet.")
+
+                elif (entertainment_balance < from_amount):
+                    print("You don't have up to the requested amount.")
+
 
                 """
                 Waits for 5 seconds, while transferring funds from the selected category.
