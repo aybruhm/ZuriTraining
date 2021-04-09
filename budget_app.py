@@ -43,6 +43,7 @@ class Budget:
             budget.transfer_balance()
         else:
             print("Opps. Seems like you have selected an invalid option.")
+            budget.restartBudgetApp()
 
 
     def restartBudgetApp(self):
@@ -52,7 +53,7 @@ class Budget:
         restart_choice = str.capitalize(input("Do you want to try again? (Y) - yes or (N) - no: "))
         
         if restart_choice == "Y":
-            Budget.startBudgetApp(self)
+            budget.startBudgetApp(self)
         elif restart_choice == "N":
             print("Thank you for checking in with us.")
 
@@ -121,7 +122,7 @@ class Budget:
             restart_choice = input("Do you want to try again? (Y) - yes or (N) - no: ")
             
             if restart_choice == "Y":
-                budget.deposit_funds()
+                budget.restartBudgetApp()
             elif restart_choice == "N":
                 print("Thank you for checking in with us.")
 
@@ -178,7 +179,7 @@ class Budget:
             
             elif (total_balance > amount_withdrawal):
                 total_balance -= amount_withdrawal
-                print("Withdrawaling from Food balance. . .Please Wait. . .Money withdrawaled!")
+                print("Withdrawaling from Clothing balance. . .Please Wait. . .Money withdrawaled!")
                 print(f"You now have {total_balance} in your food balance. \n")
 
             elif (total_balance < amount_withdrawal):
@@ -206,7 +207,7 @@ class Budget:
             
             elif (total_balance > amount_withdrawal):
                 total_balance -= amount_withdrawal
-                print("Withdrawaling from Food balance. . .Please Wait. . .Money withdrawaled!")
+                print("Withdrawaling from Entertainment balance. . .Please Wait. . .Money withdrawaled!")
                 print(f"You now have {total_balance} in your food balance. \n")
 
             elif (total_balance < amount_withdrawal):
@@ -349,7 +350,7 @@ class Budget:
                 time.sleep(5)
                 clothing_balance += from_amount
                 print("\nMoney transferred!")
-                print(f"You now have {clothing_balance} in your wallet.")
+                print(f"You now have {clothing_balance} in your clothing wallet.")
 
                 """
                 Calls restartBudgetApp, giving the user an option to restart again.
@@ -387,7 +388,7 @@ class Budget:
                 time.sleep(5)
                 entertainment_balance += from_amount
                 print("Money transferred!")
-                print(f"You now have {entertainment_balance} in your wallet.\n")
+                print(f"You now have {entertainment_balance} in your entertainment wallet.\n")
 
                 """
                 Calls restartBudgetApp, giving the user an option to restart again.
