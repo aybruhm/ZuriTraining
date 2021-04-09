@@ -7,6 +7,9 @@ Improve on your ATM mockup from last course to include the following:
 4. Any other improvement you can think of (extra point)
 """
 
+def init():
+    pass
+
 def register():
     pass
 
