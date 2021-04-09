@@ -9,6 +9,9 @@ Improve on your ATM mockup from last course to include the following:
 
 import random
 import time
+import datetime
+
+date = datetime.datetime.now()
 
 database = {}
 
@@ -71,19 +74,49 @@ def generate_acc_number():
 
 
 def bankingOperation():
-    pass
+    print("\n############ Banking Operations ############")
+
+    """
+    The current date and time
+    """
+    time_date = date.strftime("%c")
+    print(f"\nDate and Time: {time_date}")
+
+    print("What banking operations do you want to do? \n1. Withdrawal \n2. Deposit \n3. Complaint")
+    option = int(
+        input("\nPlease select an operation: ")
+    )
+    if (option == 1):
+        withdrawal()
+    elif (option == 2):
+        deposit()
+    elif (option == 3):
+        complaint()
+    else:
+        print("Oof. You have selected an invalid option.")
 
 
 def withdrawal():
-    pass
+    print("############ Withdrawal Operation ############")
 
 
 def deposit():
-    pass
+    print("############ Deposit Operation ############")
 
 
 def complaint():
-    pass
+    print("\n############ Complain Operation ############")
+    complainMsg = input("What issue will you like to report? \n\n")
+    print("\nPlease wait, while we send your complain.")
+
+    time.sleep(5)
+    # sends complain message to a txt file
+    f = open(f"complains/complain.txt", "w")
+    f.write(complainMsg)
+    f.close()
+
+    print("Complain sent!\n")
+    print("Thank you for contacting us.")
 
 
-init()
+bankingOperation()
