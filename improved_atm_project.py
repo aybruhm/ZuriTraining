@@ -68,6 +68,7 @@ def login():
     print("\n############ Login ############")
     email = input("Your Email Address: ")
     password = int(input("Your Password: "))
+    account_balance = 0
 
     for email, password in database.items():
         print(email, password)
@@ -105,6 +106,24 @@ def bankingOperation():
 
 def withdrawal():
     print("############ Withdrawal Operation ############")
+
+    acc_balance = login().account_balance
+    print(acc_balance)
+    print(f"You have #{acc_balance} in your account.\n")
+    withdrawal = int(
+        input("How much would you like to withdrawal? \n")
+    )
+
+    print("Withdrawaling cash. . .Please wait. . .")
+
+    time.sleep(5)
+
+    if (acc_balance <= 0):
+        print("Opps, you have cash in your account. Deposit, and try again.")
+
+    acc_balance -= withdrawal
+    print("Take your cash. :-)")
+    print(f"You have #{acc_balance} remaining in your account.")
 
 
 def deposit():
