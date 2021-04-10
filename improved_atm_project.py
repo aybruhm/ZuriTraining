@@ -14,11 +14,12 @@ import datetime
 date = datetime.datetime.now()
 
 database = {}
+account_balance = 0
 
 
 def init():
-    print("\nWelcome to IsraelBANK")
-    print("Do you have an account?")
+    print("\n========== Welcome to IsraelBANK ==========")
+    print("\nDo you have an account?")
     option = str.capitalize(input("Select Y - yes or N - no: "))
 
     if (option == "Y"):
@@ -39,12 +40,16 @@ def init():
 
 
 def register():
-    print("\n############ Register ############")
+    print("\n ========== Register ==========")
 
-    email = input("Your Email Address: ")
+    email = input("\nYour Email Address: ")
     first_name = input("Your First Name: ")
     last_name = input("Your Last Name: ")
     password = int(input("Your Password: "))
+
+    """
+    account_number gets generated randomly
+    """
     account_number = generate_acc_number()
     database[account_number] = [first_name, last_name, email, password]
 
@@ -66,7 +71,7 @@ def register():
 
 def login():
     print("\n############ Login ############")
-    email = input("Your Email Address: ")
+    email = input("\nYour Email Address: ")
     password = int(input("Your Password: "))
     account_balance = 0
 
@@ -107,9 +112,8 @@ def bankingOperation():
 def withdrawal():
     print("############ Withdrawal Operation ############")
 
-    acc_balance = login().account_balance
-    print(acc_balance)
-    print(f"You have #{acc_balance} in your account.\n")
+    print(account_balance)
+    print(f"You have #{account_balance} in your account.\n")
     withdrawal = int(
         input("How much would you like to withdrawal? \n")
     )
@@ -118,16 +122,28 @@ def withdrawal():
 
     time.sleep(5)
 
-    if (acc_balance <= 0):
+    if (account_balance <= 0):
         print("Opps, you have cash in your account. Deposit, and try again.")
 
-    acc_balance -= withdrawal
+    account_balance -= withdrawal
     print("Take your cash. :-)")
-    print(f"You have #{acc_balance} remaining in your account.")
+    print(f"You have #{account_balance} remaining in your account balance.")
 
 
 def deposit():
     print("############ Deposit Operation ############")
+    print(
+        f"You have #{account_balance} in your account balance.\n"
+    )
+    deposit = int(
+        input("How much would you like to deposit? ")
+    )
+    account_balance += deposit
+    print(f"Depositing cash. . .Cash deposited! \n")
+
+    time.sleep(5)
+    print("Money deposited!")
+    print(f"You now have #{account_balance} in your account.")
 
 
 def complaint():
@@ -147,4 +163,4 @@ def complaint():
     print("Thank you for contacting us.")
 
 
-bankingOperation()
+init()
