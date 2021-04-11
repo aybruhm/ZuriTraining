@@ -18,7 +18,7 @@ account_balance = 0
 
 
 def init():
-    print("\n========== Welcome to IsraelBANK ==========")
+    print("\n========== Welcome to zuriATM ==========")
     print("\nDo you have an account?")
     option = str.capitalize(input("Select Y - yes or N - no: "))
 
@@ -40,7 +40,7 @@ def init():
 
 
 def register():
-    print("\n ========== Register ==========")
+    print("\n ========== Register ========== ")
 
     email = input("\nYour Email Address: ")
     first_name = input("Your First Name: ")
@@ -70,13 +70,26 @@ def register():
 
 
 def login():
-    print("\n############ Login ############")
-    email = input("\nYour Email Address: ")
-    password = int(input("Your Password: "))
+    print("\n========== Login ========== ")
+    _email = input("\nYour Email Address: ")
+    _account_number = int(input("Your Account Number: "))
+    _password = int(input("Your Password: "))
     account_balance = 0
 
-    for email, password in database.items():
-        print(email, password)
+    if (_email and _password in database[_account_number]):
+        print("Authenticating. . .")
+
+        time.sleep(5)
+        print(f"Authenticated as {_email}!!\n")
+        bankingOperation()
+    else:
+        print("Authentication failed!")
+        confirm = str.capitalize(input("Try again? Y - yes and N - no: "))
+
+        if (confirm == "Y"):
+            login()
+        elif (confirm == "N"):
+            print("Thank you for banking with us.")
 
 
 def generate_acc_number():
@@ -87,7 +100,7 @@ def generate_acc_number():
 
 
 def bankingOperation():
-    print("\n############ Banking Operations ############")
+    print("\n========== Banking Operations ========== ")
 
     """
     The current date and time
@@ -110,7 +123,7 @@ def bankingOperation():
 
 
 def withdrawal():
-    print("############ Withdrawal Operation ############")
+    print("\n========== Withdrawal Operation ========== ")
 
     print(account_balance)
     print(f"You have #{account_balance} in your account.\n")
@@ -131,7 +144,7 @@ def withdrawal():
 
 
 def deposit():
-    print("############ Deposit Operation ############")
+    print("\n========== Deposit Operation ========== ")
     print(
         f"You have #{account_balance} in your account balance.\n"
     )
@@ -147,7 +160,7 @@ def deposit():
 
 
 def complaint():
-    print("\n############ Complain Operation ############")
+    print("\n========== Complain Operation ========== ")
     complainMsg = input("What issue will you like to report? \n\n")
     print("\nPlease wait, while we send your complain.")
 
