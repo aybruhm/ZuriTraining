@@ -38,6 +38,13 @@ def init():
         else:
             print("Oof, wrong command.")
 
+            confirm = str.capitalize(input("Try again? Y - yes and N - no: "))
+
+            if (confirm == "Y"):
+                init()
+            elif (confirm == "N"):
+                print("Thank you for banking with us.")
+
 
 def register():
     print("\n ========== Register ========== ")
@@ -74,10 +81,9 @@ def login():
     _email = input("\nYour Email Address: ")
     _account_number = int(input("Your Account Number: "))
     _password = int(input("Your Password: "))
-    account_balance = 0
 
     if (_email and _password in database[_account_number]):
-        print("Authenticating. . .")
+        print("\nAuthenticating. . .")
 
         time.sleep(5)
         print(f"Authenticated as {_email}!!\n")
@@ -108,7 +114,7 @@ def bankingOperation():
     time_date = date.strftime("%c")
     print(f"\nDate and Time: {time_date}")
 
-    print("What banking operations do you want to do? \n1. Withdrawal \n2. Deposit \n3. Complaint")
+    print("\nWhat banking operations do you want to do? \n1. Withdrawal \n2. Deposit \n3. Complaint")
     option = int(
         input("\nPlease select an operation: ")
     )
@@ -126,42 +132,59 @@ def withdrawal():
     print("\n========== Withdrawal Operation ========== ")
 
     print(account_balance)
-    print(f"You have #{account_balance} in your account.\n")
+
     withdrawal = int(
-        input("How much would you like to withdrawal? \n")
+        input("\nHow much would you like to withdrawal: ")
     )
 
-    print("Withdrawaling cash. . .Please wait. . .")
+    print("Withdrawaling cash. . .Please wait. . .\n")
 
     time.sleep(5)
 
     if (account_balance <= 0):
         print("Opps, you have cash in your account. Deposit, and try again.")
+    elif (account_balance > withdrawal):
+        account_balance -= withdrawal
+        print("Take your cash. :-)")
+    else:
+        print("Wrong command!")
 
-    account_balance -= withdrawal
-    print("Take your cash. :-)")
     print(f"You have #{account_balance} remaining in your account balance.")
+
+    option = str.capitalize(
+        input("\nWould you like to perform another transaction? Y - yes and N - no: "))
+    if (option == "Y"):
+        bankingOperation()
+    elif (option == "N"):
+        print("Thank you for banking with us today!")
 
 
 def deposit():
     print("\n========== Deposit Operation ========== ")
-    print(
-        f"You have #{account_balance} in your account balance.\n"
-    )
+
+    print(account_balance)
+
     deposit = int(
-        input("How much would you like to deposit? ")
+        input("\nHow much would you like to deposit: ")
     )
     account_balance += deposit
-    print(f"Depositing cash. . .Cash deposited! \n")
+    print(f"Depositing cash. . .Please Wait! \n")
 
     time.sleep(5)
     print("Money deposited!")
     print(f"You now have #{account_balance} in your account.")
 
+    option = str.capitalize(
+        input("\nWould you like to perform another transaction? Y - yes and N - no: "))
+    if (option == "Y"):
+        bankingOperation()
+    elif (option == "N"):
+        print("Thank you for banking with us today!")
+
 
 def complaint():
     print("\n========== Complain Operation ========== ")
-    complainMsg = input("What issue will you like to report? \n\n")
+    complainMsg = input("What issue will you like to report: ")
     print("\nPlease wait, while we send your complain.")
 
     """
@@ -175,5 +198,13 @@ def complaint():
     print("Complain sent!\n")
     print("Thank you for contacting us.")
 
+    option = str.capitalize(
+        input("\nWould you like to perform another transaction? Y - yes and N - no: "))
+    if (option == "Y"):
+        bankingOperation()
+    elif (option == "N"):
+        print("Thank you for banking with us today!")
 
+
+print(account_balance)
 init()
