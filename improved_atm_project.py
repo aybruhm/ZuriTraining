@@ -87,7 +87,7 @@ def login():
 
         time.sleep(5)
         print(f"Authenticated as {_email}!!\n")
-        bankingOperation()
+        bankingOperation(_password)
     else:
         print("Authentication failed!")
         confirm = str.capitalize(input("Try again? Y - yes and N - no: "))
@@ -105,7 +105,7 @@ def generate_acc_number():
     return random.randrange(000000000000, 11111111111)
 
 
-def bankingOperation():
+def bankingOperation(_password):
     print("\n========== Banking Operations ========== ")
 
     """
