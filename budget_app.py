@@ -1,4 +1,7 @@
 """
+Author: Israel Abraham
+Update: April 16 2021, 14:40
+
 Create a Budget class that can instantiate objects based on 
 different budget categories like food, clothing, and entertainment. 
 These objects should allow for: 

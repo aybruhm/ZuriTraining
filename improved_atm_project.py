@@ -1,10 +1,21 @@
 """
+Author: Israel Abraham
+Update: April 16 2021, 14:40
+
 Improve on your ATM mockup from last course to include the following:
 
 1. Use functions
 2. Include register, and login
 3. Generate Account Number
 4. Any other improvement you can think of (extra point)
+"""
+
+"""
+Improvements I implemented: 
+
+1. Check balance
+2. Rate our service
+
 """
 
 import random
@@ -87,6 +98,7 @@ def login():
     _email = input("\nYour Email Address: ")
     _account_number = int(input("Your Account Number: "))
     _password = int(input("Your Password: "))
+    account_balance = 0
 
     if (_email and _password in database[_account_number]):
         print("\nAuthenticating. . .")
@@ -96,7 +108,7 @@ def login():
         time.sleep(5)
         print(f"Authenticated as {user}!!")
         print(f"{user} you have #{account_balance} in your account.\n")
-        bankingOperation(user)
+        bankingOperation(user, account_balance)
     else:
         print("Authentication failed!")
         confirm = str.capitalize(input("Try again? Y - yes and N - no: "))
@@ -114,7 +126,7 @@ def generate_acc_number():
     return random.randrange(000000000000, 11111111111)
 
 
-def bankingOperation(user):
+def bankingOperation(user, account_balance):
     print(f"\n{dash} Banking Operations {dash} ")
     """
     The current date and time
@@ -127,9 +139,9 @@ def bankingOperation(user):
         input("\nPlease choose an operation: ")
     )
     if (option == 1):
-        withdrawal()
+        withdrawal(account_balance)
     elif (option == 2):
-        deposit()
+        deposit(account_balance)
     elif (option == 3):
         complaint(user)
     elif (option == 4):
