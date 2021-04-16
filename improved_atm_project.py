@@ -13,8 +13,8 @@ Improve on your ATM mockup from last course to include the following:
 """
 Improvements I implemented: 
 
-1. Check balance
-2. Rate our service
+5. Check balance
+6. Rate our service
 
 """
 
@@ -23,7 +23,6 @@ import time
 import datetime
 
 date = datetime.datetime.now()
-account_balance:int = 0
 
 database = {}
 dash = "=" * 10
@@ -139,9 +138,9 @@ def bankingOperation(user, account_balance):
         input("\nPlease choose an operation: ")
     )
     if (option == 1):
-        withdrawal(account_balance)
+        withdrawal(user, account_balance)
     elif (option == 2):
-        deposit(account_balance)
+        deposit(user, account_balance)
     elif (option == 3):
         complaint(user)
     elif (option == 4):
@@ -151,8 +150,9 @@ def bankingOperation(user, account_balance):
         print("Oof. You have selected an invalid option.")
 
 
-def withdrawal():
+def withdrawal(user, account_balance):
     print(f"\n{dash} Withdrawal Operation {dash} ")
+    print(f"{user}, you have #{account_balance} in your account.")
 
     withdrawal = int(
         input("\nHow much would you like to withdrawal: ")
@@ -167,6 +167,7 @@ def withdrawal():
     elif (account_balance > withdrawal):
         account_balance -= withdrawal
         print("Take your cash. :-)")
+        print(f"{user}, you now have #{account_balance} in your account.")
     else:
         print("Wrong command!")
 
@@ -175,15 +176,14 @@ def withdrawal():
     option = str.capitalize(
         input("\nWould you like to perform another transaction? Y - yes and N - no: "))
     if (option == "Y"):
-        bankingOperation()
+        bankingOperation(user, account_balance)
     elif (option == "N"):
         print("Thank you for banking with us today!")
 
 
-def deposit():
+def deposit(user, account_balance):
     print(f"\n{dash} Deposit Operation {dash} ")
-
-    print(account_balance)
+    print(f"{user}, you have #{account_balance} in your account.")
 
     deposit = int(
         input("\nHow much would you like to deposit: ")
@@ -193,12 +193,12 @@ def deposit():
 
     time.sleep(5)
     print("Money deposited!")
-    print(f"You now have #{account_balance} in your account.")
+    print(f"{user}, you now have #{account_balance} in your account.")
 
     option = str.capitalize(
         input("\nWould you like to perform another transaction? Y - yes and N - no: "))
     if (option == "Y"):
-        bankingOperation()
+        bankingOperation(user, account_balance)
     elif (option == "N"):
         print("Thank you for banking with us today!")
 
@@ -222,7 +222,7 @@ def complaint(user):
     option = str.capitalize(
         input("\nWould you like to perform another transaction? Y - yes and N - no: "))
     if (option == "Y"):
-        bankingOperation(user)
+        bankingOperation(user, account_balance)
     elif (option == "N"):
         print("Thank you for banking with us today!")
 
