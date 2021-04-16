@@ -28,7 +28,7 @@ class Budget:
         """
         Starts the budget app and gives the user an option to choose what he/she wants to do.
         """
-        print("Welcome to our budget app.")
+        print("\n========== Welcome to our budget app. ==========")
         choice = int(
             input("""What do you wish to do? \n\n 1. Deposit money \n 2. Withdrawal money \n 3. Calculate total balance \n 4. Transfer money \n\nPlease choose: """)
         )

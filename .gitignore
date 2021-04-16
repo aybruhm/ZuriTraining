@@ -1,3 +1,4 @@
 *.env
 *.vscode
-improved_atm_project.py
+*improved_atm_project.py
+*nevis.py
