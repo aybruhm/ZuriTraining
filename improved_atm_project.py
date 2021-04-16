@@ -12,18 +12,24 @@ import time
 import datetime
 
 date = datetime.datetime.now()
+account_balance:int = 0
 
 database = {}
-account_balance = 0
+dash = "=" * 10
 
 
 def init():
-    print("\n========== Welcome to zuriATM ==========")
+    print(f"\n{dash} Welcome to zuriATM {dash}")
     print("\nDo you have an account?")
     option = str.capitalize(input("Select Y - yes or N - no: "))
 
     if (option == "Y"):
-        login()
+        try:
+            login()
+        except KeyError:
+            print("\nxxxxxxxxxx Oga, please register an account first. xxxxxxxxxx")
+            init()
+
     elif (option == "N"):
         print(register())
     else:
@@ -47,7 +53,7 @@ def init():
 
 
 def register():
-    print("\n ========== Register ========== ")
+    print(f"\n {dash} Register {dash} ")
 
     email = input("\nYour Email Address: ")
     first_name = input("Your First Name: ")
@@ -77,7 +83,7 @@ def register():
 
 
 def login():
-    print("\n========== Login ========== ")
+    print(f"\n{dash} Login {dash} ")
     _email = input("\nYour Email Address: ")
     _account_number = int(input("Your Account Number: "))
     _password = int(input("Your Password: "))
@@ -85,9 +91,12 @@ def login():
     if (_email and _password in database[_account_number]):
         print("\nAuthenticating. . .")
 
+        user = database[_account_number][0]
+
         time.sleep(5)
-        print(f"Authenticated as {_email}!!\n")
-        bankingOperation(_password)
+        print(f"Authenticated as {user}!!")
+        print(f"{user} you have #{account_balance} in your account.\n")
+        bankingOperation(user)
     else:
         print("Authentication failed!")
         confirm = str.capitalize(input("Try again? Y - yes and N - no: "))
@@ -105,33 +114,33 @@ def generate_acc_number():
     return random.randrange(000000000000, 11111111111)
 
 
-def bankingOperation(_password):
-    print("\n========== Banking Operations ========== ")
-
+def bankingOperation(user):
+    print(f"\n{dash} Banking Operations {dash} ")
     """
     The current date and time
     """
     time_date = date.strftime("%c")
     print(f"\nDate and Time: {time_date}")
 
-    print("\nWhat banking operations do you want to do? \n1. Withdrawal \n2. Deposit \n3. Complaint")
+    print("\nWhat banking operations do you want to do? \n[1] - Withdrawal \n[2] - Deposit \n[3] - Complaint \n[4] - Exit")
     option = int(
-        input("\nPlease select an operation: ")
+        input("\nPlease choose an operation: ")
     )
     if (option == 1):
         withdrawal()
     elif (option == 2):
         deposit()
     elif (option == 3):
-        complaint()
+        complaint(user)
+    elif (option == 4):
+        print("Thank you for using our service. :-)")
+        exit()
     else:
         print("Oof. You have selected an invalid option.")
 
 
 def withdrawal():
-    print("\n========== Withdrawal Operation ========== ")
-
-    print(account_balance)
+    print(f"\n{dash} Withdrawal Operation {dash} ")
 
     withdrawal = int(
         input("\nHow much would you like to withdrawal: ")
@@ -160,7 +169,7 @@ def withdrawal():
 
 
 def deposit():
-    print("\n========== Deposit Operation ========== ")
+    print(f"\n{dash} Deposit Operation {dash} ")
 
     print(account_balance)
 
@@ -182,16 +191,16 @@ def deposit():
         print("Thank you for banking with us today!")
 
 
-def complaint():
-    print("\n========== Complain Operation ========== ")
-    complainMsg = input("What issue will you like to report: ")
+def complaint(user):
+    print(f"\n{dash} Complain Operation {dash} ")
+    complainMsg = input("\nWhat issue will you like to report: ")
     print("\nPlease wait, while we send your complain.")
 
     """
     sends complain message to a txt file
     """
     time.sleep(5)
-    f = open(f"complains/complain.txt", "w")
+    f = open(f"complains/{user}-complain.txt", "w")
     f.write(complainMsg)
     f.close()
 
@@ -201,10 +210,9 @@ def complaint():
     option = str.capitalize(
         input("\nWould you like to perform another transaction? Y - yes and N - no: "))
     if (option == "Y"):
-        bankingOperation()
+        bankingOperation(user)
     elif (option == "N"):
         print("Thank you for banking with us today!")
 
 
-print(account_balance)
 init()
