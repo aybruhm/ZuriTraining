@@ -18,10 +18,10 @@ New Improvements I implemented:
 
 """
 
+
 import random
 import time
 import datetime
-
 date = datetime.datetime.now()
 
 database = {}
@@ -137,7 +137,8 @@ def bankingOperation(user, account_balance):
     time_date = date.strftime("%c")
     print(f"\nDate and Time: {time_date}")
 
-    print("\nWhat banking operations do you want to do? \n\n[1] - Withdrawal \n[2] - Deposit \n[3] - Complaint \n[4] - Check Balance \n[5] - Rate Us \n[6] - Exit")
+    print(
+        "\nWhat banking operations do you want to do? \n\n[1] - Withdrawal \n[2] - Deposit \n[3] - Complaint \n[4] - Check Balance \n[5] - Rate Us \n[6] - Exit")
     option = int(
         input("\nPlease choose an operation: ")
     )
@@ -152,7 +153,7 @@ def bankingOperation(user, account_balance):
 
     elif (option == 4):
         checkBalance(user, account_balance)
-        
+
     elif (option == 5):
         rateUs(user)
 
@@ -242,13 +243,14 @@ def complaint(user):
 
 def checkBalance(user, account_balance):
     print(f"\n{dash} Check Your Balance {dash}")
-    
+
     print(f"\nGive us a minute as we validate your account...")
 
     time.sleep(5)
     print(f"\n{user}, your account has been validated.\nYou have {account_balance} in your account.")
 
-    option = str.capitalize(input("\nDo you wish to continue? [Y] - yes or [N] - no: "))
+    option = str.capitalize(
+        input("\nDo you wish to continue? [Y] - yes or [N] - no: "))
     if (option == "Y"):
         bankingOperation(user, account_balance)
     elif (option == "N"):
@@ -265,24 +267,27 @@ def checkBalance(user, account_balance):
         exit()
 
 
-
-
 def rateUs(user):
     print(f"\n{dash} Rate Us {dash}")
     option = int(
-        input("\nHow many stars would you rate our system?\n\n[5] - Excellent\n[4] - Very Good\n[3] - Good\n[2] - Manageable\n[1] - Poor\n[0] - Very Poor\n\nPlease choose an option: ")
+        input(
+            "\nHow many stars would you rate our system?\n\n[5] - Excellent\n[4] - Very Good\n[3] - Good\n[2] - Manageable\n[1] - Poor\n[0] - Very Poor\n\nPlease choose an option: ")
     )
 
     if (option == 5):
-        print(f"Oh my.. You rated our system the best of best. Thank you, {user}.\n")
+        print(
+            f"Oh my.. You rated our system the best of best. Thank you, {user}.\n")
     elif (option == 4):
-        print(f"Thank you, {user}. We are working very hard to make you smile.\n")
+        print(
+            f"Thank you, {user}. We are working very hard to make you smile.\n")
     elif (option == 3):
         print(f"Thank you, {user}. We are constantly improving our system.\n")
     elif (option == 2):
-        print(f"Oof, our system has been slow and tiredly annoying, {user}. We appreciate your feedback.\n")
+        print(
+            f"Oof, our system has been slow and tiredly annoying, {user}. We appreciate your feedback.\n")
     elif (option == 1):
-        print(f";-; our system is annoyingly not responsding fast, {user}. We apologize for the inconviences you faced.\n")
+        print(
+            f";-; our system is annoyingly not responsding fast, {user}. We apologize for the inconviences you faced.\n")
     else:
         print("Oof. Wrong command.")
         exit()
