@@ -41,7 +41,8 @@ def init():
             init()
 
     elif (option == "N"):
-        print(register())
+        register()
+
     else:
         print("Oops. You selected an invalid option")
         print("Do you wish to continue?")
@@ -51,6 +52,7 @@ def init():
             init()
         elif (continue_option == "N"):
             print("Thank you for banking with us.")
+            exit()
         else:
             print("Oof, wrong command.")
 
@@ -60,6 +62,7 @@ def init():
                 init()
             elif (confirm == "N"):
                 print("Thank you for banking with us.")
+                exit()
 
 
 def register():
@@ -127,6 +130,7 @@ def generate_acc_number():
 
 def bankingOperation(user, account_balance):
     print(f"\n{dash} Banking Operations {dash} ")
+
     """
     The current date and time
     """
@@ -139,14 +143,19 @@ def bankingOperation(user, account_balance):
     )
     if (option == 1):
         withdrawal(user, account_balance)
+
     elif (option == 2):
         deposit(user, account_balance)
+
     elif (option == 3):
         complaint(user)
+
     elif (option == 4):
-        checkBalance(user, acount_balance)
+        checkBalance(user, account_balance)
+        
     elif (option == 5):
         rateUs(user)
+
     elif (option == 6):
         print("Thank you for using our service. :-)")
         exit()
@@ -178,7 +187,7 @@ def withdrawal(user, account_balance):
     print(f"You have #{account_balance} remaining in your account balance.")
 
     option = str.capitalize(
-        input("\nWould you like to perform another transaction? Y - yes and N - no: "))
+        input("\nWould you like to perform another transaction? [Y] - yes or [N] - no: "))
     if (option == "Y"):
         bankingOperation(user, account_balance)
     elif (option == "N"):
@@ -200,7 +209,7 @@ def deposit(user, account_balance):
     print(f"{user}, you now have #{account_balance} in your account.")
 
     option = str.capitalize(
-        input("\nWould you like to perform another transaction? Y - yes and N - no: "))
+        input("\nWould you like to perform another transaction? [Y] - yes or [N] - no: "))
     if (option == "Y"):
         bankingOperation(user, account_balance)
     elif (option == "N"):
@@ -237,9 +246,9 @@ def checkBalance(user, account_balance):
     print(f"\nGive us a minute as we validate your account...")
 
     time.sleep(5)
-    print(f"{user}, your account has been validated.\nYou have {account_balance} in your account.")
+    print(f"\n{user}, your account has been validated.\nYou have {account_balance} in your account.")
 
-    option = str.capitalize(input("Do you wish to continue? [Y] - yes or [N] - no: "))
+    option = str.capitalize(input("\nDo you wish to continue? [Y] - yes or [N] - no: "))
     if (option == "Y"):
         bankingOperation(user, account_balance)
     elif (option == "N"):
