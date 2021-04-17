@@ -11,7 +11,7 @@ Improve on your ATM mockup from last course to include the following:
 """
 
 """
-Improvements I implemented: 
+New Improvements I implemented: 
 
 5. Check balance
 6. Rate our service
